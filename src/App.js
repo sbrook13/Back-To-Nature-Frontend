@@ -13,7 +13,6 @@ class App extends React.Component {
     fetch(`https://developer.nps.gov/api/v1/parks?api_key=${process.env.REACT_APP_NPS_API_KEY}`)
       .then(response => response.json())
       .then(results => this.setState({parks: results.data}))
-      .then(console.log(this.state.parks))
   }
 
   render() {

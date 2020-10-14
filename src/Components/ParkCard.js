@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ParksCard ({park}) {
-  console.log(park)
 
   return (
     <div className="park-card">
