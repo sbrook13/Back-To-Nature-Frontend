@@ -4,8 +4,9 @@ export default function ParksCard ({park}) {
   console.log(park)
 
   return (
-    <div>
-      <h2>{park.fullName}</h2>
+    <div className="park-card">
+      <h3>{park.fullName}</h3>
+      {park.images[0] ? <img src={park.images[0].url} alt={park.images[0].altText} /> : null}
     </div>
   )
 }

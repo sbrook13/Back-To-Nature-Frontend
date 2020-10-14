@@ -10,6 +10,11 @@ export default function ParksContainer ({parks}) {
   }
 
   return (
-    showParkCard()
-  )
+    <div className="parks-box">
+      <h2>Get Back to Nature</h2>
+      <div className="park-cards-container">
+        {showParkCard()}
+      </div>
+      </div>
+    )
 }
