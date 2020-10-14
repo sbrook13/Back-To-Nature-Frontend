@@ -5,7 +5,7 @@ export default class TreeContainer extends Component {
     render(){
         return (
             <div className="tree-box">
-            <h2>Give Back to Nature</h2>
+            <h2 className="tree-header">Give Back to Nature</h2>
             <div>
                 <p>Tree goes here</p>
             </div>
