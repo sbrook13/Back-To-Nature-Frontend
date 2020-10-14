@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ParksContainer from './Components/ParksContainer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  
+  state = {
+    parks: []
+  }
+
+  componentDidMount(){
+    fetch(`https://developer.nps.gov/api/v1/parks?api_key=${process.env.REACT_APP_NPS_API_KEY}`)
+      .then(response => response.json())
+      .then(results => this.setState({parks: results.data}))
+      .then(console.log(this.state.parks))
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Back to Nature</h1>
+        <ParksContainer parks={this.state.parks} />
+      </div>
+    )
+  }
 }
 
 export default App;
