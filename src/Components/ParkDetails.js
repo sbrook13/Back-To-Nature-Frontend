@@ -42,13 +42,13 @@ export default function ParksDetails ({park, showAll}) {
           <h4>Description</h4>
           <p>{park.description}</p>
         </div>
-        <div className="entrance-fees">
-          <h4>Entrance Fees</h4>
-          <ul>{showEntranceFees()}</ul>
-        </div>
         <div className="directions">
           <h4>Directions</h4>
           <p>{park.description}</p>
+        </div>
+        <div className="entrance-fees">
+          <h4>Entrance Fees</h4>
+          <ul>{showEntranceFees()}</ul>
         </div>
         
         <div className="activities">
