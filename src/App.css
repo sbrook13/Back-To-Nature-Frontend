@@ -51,7 +51,7 @@ img {
 
 .tree-box {
   width: 22em;
-  height: 30em;
+  height: max-content;
   background-color: snow;
   box-shadow: 0 12px 12px -6px grey;
   border-radius: 8px;

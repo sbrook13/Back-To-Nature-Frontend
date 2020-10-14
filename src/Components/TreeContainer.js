@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TreeCard from './TreeCard'
+import DonateTreeForm from './DonateTreeForm'
 
 export default class TreeContainer extends Component {
 
@@ -32,21 +33,23 @@ export default class TreeContainer extends Component {
         })
     }
 
-    showSelectedTree = ({selectedTree}) => {
-        return <img className="tree-image" src={this.state.selectedTree.image} alt="" /> 
-    }
+    // showSelectedTree = ({selectedTree}) => {
+    //     return <img className="tree-image" src={this.state.selectedTree.image} alt="" /> 
+    // }
 
     render(){
         return (
             <div className="tree-box">
             <h2>Give Back to Nature</h2>
                 <div>
-                    if(this.state.selectedTree) ? this.showSelectedTree() : <img src="https://csfs.colostate.edu/media/sites/22/2016/04/pinon-tree.jpg" alt=""/> 
+                <img src="https://csfs.colostate.edu/media/sites/22/2016/04/pinon-tree.jpg" alt=""/>
+        {/* if(this.state.selectedTree) ? this.showSelectedTree() : <img src="https://csfs.colostate.edu/media/sites/22/2016/04/pinon-tree.jpg" alt=""/> */}
                     <h3>Donate a Tree to Fight Deforestation!</h3>
                     <select onChange={this.handleChange}>
                         {this.listTreeNames()}
                     </select>
                     <button className="submit-button">Submit</button>
+                    <DonateTreeForm />
                 </div>
             </div>
                 )
