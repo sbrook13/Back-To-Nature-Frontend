@@ -1,20 +1,65 @@
 import React from 'react';
 import ParkCard from './ParkCard'
+import ParkDetails from './ParkDetails'
 
-export default function ParksContainer ({parks}) {
+class ParksContainer extends React.Component {
 
-  const showParkCard = () => {
-    return parks.map(park => {
-      return <ParkCard park={park}/>
+  state = {
+    parks: [], 
+    selectedPark: null,
+  }
+
+  componentDidMount(){
+    fetch(`https://developer.nps.gov/api/v1/parks?api_key=${process.env.REACT_APP_NPS_API_KEY}`)
+      .then(response => response.json())
+      .then(results => this.setState({parks: results.data}))
+      .then(console.log(this.state.parks))
+  }
+
+  selectPark = (park) => {
+    this.setState({selectedPark: park})
+  }
+
+  showAll = () => {
+    this.setState({selectedPark: null})
+  }
+
+  displayParkDetails = () => {
+    const selectedPark = this.state.selectedPark
+    return <ParkDetails
+      park={selectedPark}
+      showAll={this.showAll}
+    />
+  }
+
+  showParkCards = () => {
+    return (
+      <div className="park-cards-container">
+        {this.populateCards()}
+      </div>
+    )
+  }
+
+  populateCards = () => {
+    return this.state.parks.map(park => {
+      return (
+        <ParkCard 
+          park={park} 
+          selectPark={this.selectPark} 
+          showAll={this.showAll}/>
+      )
     })
   }
 
-  return (
-    <div className="parks-box">
-      <h2>Get Back to Nature</h2>
-      <div className="park-cards-container">
-        {showParkCard()}
-      </div>
-      </div>
+  render() {
+    return (
+      <div className="parks-box">
+        <h2>Get Back to Nature</h2>
+        <div>
+          {this.state.selectedPark ? this.displayParkDetails() : this.showParkCards()}
+        </div>
+        </div>
     )
+  }  
 }
+export default ParksContainer

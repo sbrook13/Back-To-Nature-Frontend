@@ -33,10 +33,6 @@ export default class TreeContainer extends Component {
         })
     }
 
-    // showSelectedTree = ({selectedTree}) => {
-    //     return <img className="tree-image" src={this.state.selectedTree.image} alt="" /> 
-    // }
-
     render(){
         return (
             <div className="tree-box">
@@ -56,4 +52,3 @@ export default class TreeContainer extends Component {
             }
         }
         
-        // {this.showTreeCards()}
