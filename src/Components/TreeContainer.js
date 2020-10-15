@@ -36,17 +36,16 @@ export default class TreeContainer extends Component {
     render(){
         return (
             <div className="tree-box">
-            <h2 className="tree-header">Give Back to Nature</h2>
-                <div>
-                <img src="https://csfs.colostate.edu/media/sites/22/2016/04/pinon-tree.jpg" alt=""/>
-        {/* if(this.state.selectedTree) ? this.showSelectedTree() : <img src="https://csfs.colostate.edu/media/sites/22/2016/04/pinon-tree.jpg" alt=""/> */}
-                    <h3 className="tree-header">Donate a Tree to Fight Deforestation!</h3>
+                <h2 className="tree-header">Give Back to Nature</h2>
+                <img className="tree-image" src="https://i.imgur.com/MogR0ee.jpg" alt=""/>
+                <h3 className="call-to-action">Donate a Tree to Fight Deforestation!</h3>
+                <form className="select-tree-form">
                     <select onChange={this.handleChange}>
                         {this.listTreeNames()}
                     </select>
-                    <button className="submit-button">Submit</button>
-                    <DonateTreeForm />
-                </div>
+                    <button className="submit-button">Select Tree</button>
+                </form>
+                <DonateTreeForm />
             </div>
                 )
             }

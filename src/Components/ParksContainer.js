@@ -10,10 +10,12 @@ class ParksContainer extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`https://developer.nps.gov/api/v1/parks?api_key=${process.env.REACT_APP_NPS_API_KEY}`)
+    fetch(`https://developer.nps.gov/api/v1/parks?api_key=${process.env.REACT_APP_NPS_API_KEY}&stateCode=CO,UT,WY,CA,NM,AZ,NV,ID,MT&limit=400`)
       .then(response => response.json())
-      .then(results => this.setState({parks: results.data}))
-      .then(console.log(this.state.parks))
+      .then(results => {
+        const parksWithPhotos = results.data.filter(park => park.images !== null)
+        this.setState({parks: parksWithPhotos})
+      })
   }
 
   selectPark = (park) => {
